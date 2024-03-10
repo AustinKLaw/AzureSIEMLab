@@ -43,29 +43,30 @@ Map After 1 Hour (Russia Attacks):  <br/>
 <h2>Initial Thoughts</h2>
 Almost as soon as the machine was vulnerable login attemtps came in. We can see the login attempts use very simple default usernames and passwords, since there are no indicatiosn of usernames on the machine. Russia overwhelmed the machine so much that within a few hours all of my free API requests for geolocation were used, so I unfortunately didn't get to plot any other countries. This bearing in mind is only the brute force RDP connections, and doesn't list any other network interactions.
 
-<h2>Stopping Attacks<h2>
+<h2>Stopping Attacks</h2>
+<p align="center">
 Changed RDP Port, still had brute force attacks: <br/>
-<img src="https://imgur.com/1PTQjxT" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/1PTQjxT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Misconfigured setup and got locked out:  <br/>
-<img src="https://imgur.com/PDcRrPK" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/PDcRrPK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Adding My IP Address To Whitelist: <br/>
-<img src="https://imgur.com/symDbZC" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/symDbZC.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Using Geolocation to Block Address:  <br/>
-<img src="https://imgur.com/zq8ePa6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/zq8ePa6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Connecting Back To US:  <br/>
-<img src="https://imgur.com/0UigFD3" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/0UigFD3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Setup 2FA To Block Anyone With Password:  <br/>
-<img src="https://imgur.com/L7WcXwL" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/L7WcXwL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <h2>Conclusion</h2>

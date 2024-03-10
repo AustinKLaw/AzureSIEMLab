@@ -1,6 +1,3 @@
-# AzureSIEMLab
-Creating a honeypot in Microsoft Azure
-
 <h1>Honeypot with Microsoft Sentinel</h1>
 
  ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
@@ -26,31 +23,23 @@ I created a honeypot in Microsoft Azure by removing all firewall rules and openi
 
 <p align="center">
 Opening Ports In Azure: <br/>
-<img src="https://i.imgur.com/601wlsD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Pu0xl9v.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+First Ping Attempt:  <br/>
+<img src="https://i.imgur.com/giyoXnQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Disabling Firewall and Sending Ping: <br/>
+<img src="https://i.imgur.com/Lvuqaqn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Querying Logs In Sentinel:  <br/>
+<img src="https://i.imgur.com/0Ydh0so.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Map After 1 Hour (Russia Attacks):  <br/>
+<img src="https://i.imgur.com/Qyosh2v.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 <!--

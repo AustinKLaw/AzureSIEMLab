@@ -1,55 +1,73 @@
-<h1>Vulnerabilty Scanning and Analysis with Nessus</h1>
+<h1>Honeypot with Microsoft Sentinel</h1>
 
 <h2>Description</h2>
-I grabbed a vulnerable machine off the web, Metasploitable v2, and scanned it using Nessus to see what sort of weaknesses I'd find.
+I created a honeypot in Microsoft Azure by removing all firewall rules and opening all the ports to the internet. I monitored and logged Remote Desktop login attempts and brute force attacks using Microsoft Sentinel log management. I plotted them in real time using geolocation data from the logs on a map. After leaving it exposed for a while, I defended against brute force attacks by changing the RDP port, using software to lockout IPs and locations, and then enabling multifactor authentication.
 <br />
 
 
 <h2>Utilities Used</h2>
 
-- <b>VMWare</b> 
-- <b>Nessus</b>
-- <b>Metasploitable</b>
+- <b>Azure</b> 
+- <b>Sentinel</b>
+- <b>IP Geolocation API</b>
+- <b>RDP Guard</b>
+- <b>Duo</b>
 
 <h2>Environments Used </h2>
 
-- <b>Ubuntu VM</b>
-- <b>Windows 11</b>
+- <b>Windows 10</b> (21H2)
 
-<h2>Metasploitable Scans:</h2>
+<h2>Opening Up the VM:</h2>
 
 <p align="center">
-Launching the machine: <br/>
-<img src="https://i.imgur.com/oW8aM4U.png"/>
+Opening Ports In Azure: <br/>
+<img src="https://i.imgur.com/Pu0xl9v.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Scan with Nessus:  <br/>
-<img src="https://i.imgur.com/jaSk8Gs.png"/>
+First Ping Attempt:  <br/>
+<img src="https://i.imgur.com/giyoXnQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Deprecated Ubuntu Version: <br/>
-<img src="https://i.imgur.com/oDoaQ8a.png"/>
+Disabling Firewall and Sending Ping: <br/>
+<img src="https://i.imgur.com/Lvuqaqn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Unpatched DNS Resolver:  <br/>
-<img src="https://i.imgur.com/179fnaq.png"/>
+Querying Logs In Sentinel:  <br/>
+<img src="https://i.imgur.com/0Ydh0so.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-SSL 2.0/3.0 Protocol:  <br/>
-<img src="https://i.imgur.com/bdiqy44.png"/>
-<br />
-<br />
-Weak Passwords:  <br/>
-<img src="https://i.imgur.com/VymRJik.png"/>
-<br />
-<br />
-Keys Generated with bugged libraries:  <br/>
-<img src="https://i.imgur.com/1xQcMdL.png"/>
+Map After 1 Hour (Russia Attacks):  <br/>
+<img src="https://i.imgur.com/Qyosh2v.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
-<h2>Analysis</h2>
-Since this machine has a large amoutn of vulnerabilites that need to be resolved, it would be a major liability to any company whose network its on. While doing this testing, this VM was only exposed to my local network, so there was no risk of infection or VM escape. 
-With a machine this insecure, it would be worth scanning to see if it had been compromised, and if so following NIST 800-61 Incident Response lifecyle. If there wasn't any confirmed breaches, I'd create a detailed report of the most critical flaws to hand to any teams dependent on this system, so we could work together to resolve them without reducing productivity. In particular it would likely be worth educating on password usage, given the amount of default passwords used that could be brute forced on the open ports. Once all critical vulnerabilities were addressed we could move towards resolving less major issues, and creating plans and systems to keep the machine updated, as well as any other machines with out of date software.
+<h2>Initial Thoughts</h2>
+Almost as soon as the machine was vulnerable login attemtps came in. We can see the login attempts use very simple default usernames and passwords, since there are no indication of usernames on the machine. Russia overwhelmed the machine so much that within a few hours all of my free API requests for geolocation were used, so I unfortunately didn't get to plot any other countries. This bearing in mind is only the brute force RDP connections, and doesn't list any other network interactions.
 
-It also makes sense to automate this scanning process with Nessus or any other solution due to making it easier to identify vulnerabilites and deprecated software as they appear, and making resolution of such issues less time critical and less likely to interrupt workflows.
+<h2>Stopping Attacks</h2>
+<p align="center">
+Changed RDP Port, still had brute force attacks: <br/>
+<img src="https://i.imgur.com/1PTQjxT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+Misconfigured setup and got locked out:  <br/>
+<img src="https://i.imgur.com/PDcRrPK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+Adding My IP Address To Whitelist: <br/>
+<img src="https://i.imgur.com/symDbZC.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+Using Geolocation to Block Address:  <br/>
+<img src="https://i.imgur.com/zq8ePa6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+Connecting Back To US:  <br/>
+<img src="https://i.imgur.com/0UigFD3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+Setup 2FA To Block Anyone With Password:  <br/>
+<img src="https://i.imgur.com/L7WcXwL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 
+<h2>Conclusion</h2>
+I thought going into this that reconfiguring the default port addresses would be a more helpful deterrent. However it had almost no decrease on the barrage of login attempts. I had a bit of a scare misconfiguring geolocation blocker and locking myself out of the machine, but was able to use the console to whitelist my IP and regain access. A firewall can block a connection but if someone has a backdoor they will be able to regain access easily! The geolocation worked great once setup and reduced a lot of attacks, however using a VPN can easily bypass this. A private VPN would be far more effective, and 2FA helps ensure that even if there is a brute-force attack that nobody has access to the system who isn't approved.
